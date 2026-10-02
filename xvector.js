@@ -1494,7 +1494,8 @@ bot.command("update", async (ctx) => doUpdate(ctx));
 
 // ✅ UPDATE URL DISINI AJA (GAK DIPISAH)
 const UPDATE_URL =
-  "https://raw.githubusercontent.com/wow314-afk/x-vectorautoupdate/refs/heads/main/xvector.js"; // GANTI RAW URL
+  "const UPDATE_URL =
+  "https://raw.githubusercontent.com/Darlin77/xvector-update/refs/heads/main/xvector.js";"; // GANTI RAW URL
 
 // ✅ foto /start
 const thumbnailUp = "https://files.catbox.moe/km50ik.jpg"; // GANTI (boleh file_id juga)
