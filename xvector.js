@@ -37,6 +37,18 @@ const userBugSelection = new Map();
 const attackConfig = new Map();
 const multiBugSession = new Map();
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+// ===============================
+// GLOBAL ERROR HANDLERS
+// ===============================
+process.on('uncaughtException', (err) => {
+  console.log('❌ UNCAUGHT EXCEPTION:', err.stack || err);
+});
+
+process.on('unhandledRejection', (reason) => {
+  console.log('❌ UNHANDLED REJECTION:', reason);
+});
+
 // === Path File ===
 const premiumFile = "./Db/premiums.json";
 const adminFile = "./Db/admins.json";
@@ -1494,14 +1506,13 @@ bot.command("update", async (ctx) => doUpdate(ctx));
 
 // ✅ UPDATE URL DISINI AJA (GAK DIPISAH)
 const UPDATE_URL =
-  "const UPDATE_URL =
-  "https://raw.githubusercontent.com/Darlin77/xvector-update/refs/heads/main/xvector.js";"; // GANTI RAW URL
+  "https://raw.githubusercontent.com/Darlin77/xvector-update/refs/heads/main/xvector.js";
 
 // ✅ foto /start
-const thumbnailUp = "https://files.catbox.moe/km50ik.jpg"; // GANTI (boleh file_id juga)
+const thumbnailUp = "https://files.catbox.moe/km50ik.jpg";
 
 // ✅ file yang mau ditimpa update (samain sama file yang dijalanin panel)
-const UPDATE_FILE_PATH = "./xvector.js"; // GANTI kalau panel jalanin file lain
+const UPDATE_FILE_PATH = "./xvector.js";
 
 function downloadToFile(url, filePath) {
   return new Promise((resolve, reject) => {
@@ -1604,11 +1615,9 @@ async function autoUpdateCheck() {
   }
 }
 
-// cek pertama setelah 30 detik
-setTimeout(autoUpdateCheck, 30 * 1000);
-
-// cek berkala tiap 5 menit
-setInterval(autoUpdateCheck, AUTO_CHECK_INTERVAL);
+// ⛔ AUTO UPDATE DESACTIVADO (evita que el bot se apague solo)
+// setTimeout(autoUpdateCheck, 30 * 1000);
+// setInterval(autoUpdateCheck, AUTO_CHECK_INTERVAL);
 
 // ===============================
 // LIST BLOCK CMD
