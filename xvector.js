@@ -1517,7 +1517,7 @@ function downloadToFile(url, filePath) {
 
         file.on("finish", () => file.close(resolve));
       })
-      .on("error", (err) {
+      .on("error", (err) => {
         file.close(() => fs.unlink(filePath, () => {}));
         reject(err);
       });
@@ -1525,7 +1525,7 @@ function downloadToFile(url, filePath) {
 }
 
 async function doUpdate(ctx) {
-  if (ctx.from.id != ownerID) {
+  if (ctx.from.id != OWNER_IDS[0]) {
         return ctx.reply("❌ ☇ Akses hanya untuk pemilik");
     }
     
